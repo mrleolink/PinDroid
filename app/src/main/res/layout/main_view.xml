@@ -22,53 +22,53 @@
  */
  -->   
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_menu_row"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical" >
+    <!-- icon -->
+    <ImageView
+        android:id="@+id/menurow_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="32dp"
+        android:gravity="center"
+        android:layout_marginTop="12dp"
+        tools:src="@drawable/ic_bookmark"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp" >
+    <!-- text -->
+    <TextView
+        android:id="@+id/menurow_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/menurow_icon"
+        android:layout_toLeftOf="@+id/menurow_counter"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="left|center_vertical"
+        android:minHeight="48dp"
+        android:textColor="@color/text_title"
+        android:textSize="14sp"
+        tools:text="LoremIpsumLoremIpsumLoremIpsumLoremIpsumLoremIpsumLoremIpsumLoremIpsumLoremIpsumLoremIpsum"/>
 
-        <!-- icon -->
-        <ImageView
-            android:id="@+id/menurow_icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="16dp"
-            android:gravity="center"
-            android:layout_marginTop="12dp" />
+    <!-- counter -->
+    <TextView
+        android:id="@+id/menurow_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="right|center_vertical"
+        android:minHeight="48dp"
+        android:textColor="@color/text_title"
+        android:textSize="14sp"
+        tools:text="99999999"/>
 
-        <!-- text -->
-        <TextView
-            android:id="@+id/menurow_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/menurow_icon"
-            android:layout_marginLeft="32dp"
-            android:gravity="center_vertical"
-            android:minHeight="48dp"
-            android:textColor="@color/text_title"
-            android:textSize="14sp"
-            />
-
-        <!-- counter -->
-        <TextView
-            android:id="@+id/menurow_counter"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:minHeight="48dp"
-            android:padding="4dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/text_title"
-            android:textSize="14sp" />
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>
