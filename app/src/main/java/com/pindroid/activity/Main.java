@@ -22,7 +22,6 @@
 package com.pindroid.activity;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -412,10 +411,6 @@ public class Main extends FragmentBaseActivity implements OnBookmarkSelectedList
 			getSupportFragmentManager().popBackStackImmediate(id, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 		}
 	}
-	
-	private boolean isTwoPane(){
-		return getResources().getBoolean(R.bool.has_two_panes);
-	}
 
 	public void onMyBookmarksSelected(String tagname) {
 		BrowseBookmarksFragment frag = new BrowseBookmarksFragment();
@@ -551,14 +546,8 @@ public class Main extends FragmentBaseActivity implements OnBookmarkSelectedList
 		}
 
         // reset current fragments
-		Fragment cf = getSupportFragmentManager().findFragmentById(R.id.right_frame);
 		Fragment lf = getSupportFragmentManager().findFragmentById(R.id.left_frame);
-		
-		if(cf != null){
-			((PindroidFragment)cf).setUsername(app.getUsername());
-			((PindroidFragment)cf).refresh();
-		}
-		
+
 		if(lf != null){
 			((PindroidFragment)lf).setUsername(app.getUsername());
 			((PindroidFragment)lf).refresh();
@@ -590,33 +579,19 @@ public class Main extends FragmentBaseActivity implements OnBookmarkSelectedList
 		
 		if(BookmarkViewType.EDIT.equals(viewType)){
             onBookmarkAdd(b, b);
-		} else if(BookmarkViewType.WEB.equals(viewType) && SettingsHelper.getUseBrowser(this)) {
-            startActivity(IntentHelper.OpenInBrowser(b.getUrl()));
+		} else if(BookmarkViewType.WEB.equals(viewType)) {
+            IntentHelper.openInChromeCustomTab(this, b.getUrl());
         } else {
             ViewBookmarkFragment frag = new ViewBookmarkFragment();
             frag.setBookmark(b, viewType);
 
             FragmentManager fragmentManager = getSupportFragmentManager();
 
-            if(isTwoPane()){
-                FragmentTransaction t = fragmentManager.beginTransaction();
-
-                if(fragmentManager.findFragmentByTag("right") instanceof ViewBookmarkFragment){
-                    ViewBookmarkFragment viewFrag = (ViewBookmarkFragment) fragmentManager.findFragmentByTag("right");
-                    viewFrag.setBookmark(b, viewType);
-                    viewFrag.refresh();
-                } else {
-                    t.replace(R.id.right_frame, frag, "right");
-                    t.commitAllowingStateLoss();
-                }
-            } else {
-                if(fragmentManager.findFragmentByTag("left") instanceof ViewBookmarkFragment){
-                    ViewBookmarkFragment viewFrag = (ViewBookmarkFragment) fragmentManager.findFragmentByTag("left");
-                    viewFrag.setBookmark(b, viewType);
-                    viewFrag.refresh();
-                } else replaceLeftFragment(frag, true);
-            }
-
+            if(fragmentManager.findFragmentByTag("left") instanceof ViewBookmarkFragment){
+                ViewBookmarkFragment viewFrag = (ViewBookmarkFragment) fragmentManager.findFragmentByTag("left");
+                viewFrag.setBookmark(b, viewType);
+                viewFrag.refresh();
+            } else replaceLeftFragment(frag, true);
         }
 	}
 
@@ -671,24 +646,11 @@ public class Main extends FragmentBaseActivity implements OnBookmarkSelectedList
 		
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		
-		if(isTwoPane()){
-			FragmentTransaction t = fragmentManager.beginTransaction();
-			
-			if(fragmentManager.findFragmentByTag("right") instanceof ViewNoteFragment){
-				ViewNoteFragment viewFrag = (ViewNoteFragment) fragmentManager.findFragmentByTag("right");
-				viewFrag.setNote(n);
-				viewFrag.refresh();
-			} else {
-				t.replace(R.id.right_frame, frag, "right");
-                t.commitAllowingStateLoss();
-			}
-		} else {
-			if(fragmentManager.findFragmentByTag("left") instanceof ViewNoteFragment){
-				ViewNoteFragment viewFrag = (ViewNoteFragment) fragmentManager.findFragmentByTag("left");
-				viewFrag.setNote(n);
-				viewFrag.refresh();
-			} else replaceLeftFragment(frag, true);
-		}
+        if(fragmentManager.findFragmentByTag("left") instanceof ViewNoteFragment){
+            ViewNoteFragment viewFrag = (ViewNoteFragment) fragmentManager.findFragmentByTag("left");
+            viewFrag.setNote(n);
+            viewFrag.refresh();
+        } else replaceLeftFragment(frag, true);
 	}
 
 	public void onViewTagSelected(String tag, String user) {

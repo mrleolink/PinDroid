@@ -1,10 +1,13 @@
 package com.pindroid.action;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.customtabs.CustomTabsIntent;
 
 import com.pindroid.Constants;
+import com.pindroid.R;
 import com.pindroid.activity.Main;
 
 public class IntentHelper {
@@ -94,8 +97,14 @@ public class IntentHelper {
 		return i;
 	}
 
-    public static Intent OpenInBrowser(String url){
-        Uri link = Uri.parse(url);
-        return new Intent(Intent.ACTION_VIEW, link);
+    public static void openInChromeCustomTab(Activity activity, String url){
+		CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+		builder.setShowTitle(true);
+		builder.addDefaultShareMenuItem();
+		builder.setToolbarColor(activity.getResources().getColor(R.color.actionbar_background));
+		builder.setStartAnimations(activity, R.anim.slide_up, R.anim.hold);
+		builder.setExitAnimations(activity, R.anim.hold, R.anim.slide_down);
+		CustomTabsIntent customTabsIntent = builder.build();
+		customTabsIntent.launchUrl(activity, Uri.parse(url));
     }
 }

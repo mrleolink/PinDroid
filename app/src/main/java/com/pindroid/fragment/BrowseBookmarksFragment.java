@@ -268,10 +268,7 @@ public class BrowseBookmarksFragment extends ListFragment
 		Bookmark b = BookmarkManager.CursorToBookmark(c);
 		
 		switch (aItem.getItemId()) {
-			case R.id.menu_bookmark_context_open:
-				openBookmarkInBrowser(b);
-				return true;
-			case R.id.menu_bookmark_context_view:				
+			case R.id.menu_bookmark_context_view:
 				viewBookmark(b);
 				return true;
 			case R.id.menu_bookmark_context_edit:

@@ -25,10 +25,7 @@
 	<item 
 		android:id="@+id/menu_bookmark_context_add" 
 		android:title="@string/bookmark_context_add" />
-	<item 
-		android:id="@+id/menu_bookmark_context_open" 
-		android:title="@string/bookmark_context_open" />
-	<item 
+	<item
 		android:id="@+id/menu_bookmark_context_view" 
 		android:title="@string/bookmark_context_view" />
 	<item 

@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.pindroid"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 21
         versionCode 65
         versionName "3.2.0"
@@ -34,6 +34,7 @@ dependencies {
     compile 'com.google.android.apps.dashclock:dashclock-api:2.0.0'
     compile 'com.melnykov:floatingactionbutton:1.0.5'
     compile 'com.iangclifton.android:floatlabel:1.0.1'
+    compile 'com.android.support:customtabs:23.3.0'
 
     androidTestCompile 'com.android.support.test:runner:0.4.1'
     androidTestCompile 'com.android.support.test:rules:0.4.1'
