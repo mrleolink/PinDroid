@@ -50,7 +50,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.melnykov.fab.FloatingActionButton;
@@ -126,8 +125,8 @@ public class BrowseBookmarksFragment extends ListFragment
 		setHasOptionsMenu(true);
 		
 		mAdapter = new SimpleCursorAdapter(getActivity(), R.layout.bookmark_view, null, 
-				new String[]{Bookmark.Description, Bookmark.Tags, Bookmark.ToRead, Bookmark.Shared, Bookmark.Synced}, 
-				new int[]{R.id.bookmark_description, R.id.bookmark_tags, R.id.bookmark_unread, R.id.bookmark_private, R.id.bookmark_synced}, 0);
+				new String[]{Bookmark.Description, Bookmark.Url, Bookmark.Tags, Bookmark.ToRead, Bookmark.Shared, Bookmark.Synced},
+				new int[]{R.id.bookmark_description, R.id.bookmark_url, R.id.bookmark_tags, R.id.bookmark_unread, R.id.bookmark_private, R.id.bookmark_synced}, 0);
 		
 		setListAdapter(mAdapter);
 		mAdapter.setViewBinder(new BookmarkViewBinder());

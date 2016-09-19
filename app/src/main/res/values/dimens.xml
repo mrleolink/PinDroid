@@ -36,8 +36,6 @@
 
     <dimen name="account_list_height">64dp</dimen>
 
-    <dimen name="bookmark_list_view_height">72dp</dimen>
-
     <dimen name="view_bookmark_padding">16dp</dimen>
     <dimen name="view_bookmark_title_text">18sp</dimen>
     <dimen name="view_bookmark_body_text">16sp</dimen>

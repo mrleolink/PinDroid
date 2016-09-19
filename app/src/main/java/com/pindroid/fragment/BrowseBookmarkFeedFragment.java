@@ -101,8 +101,8 @@ public class BrowseBookmarkFeedFragment extends ListFragment
 		setHasOptionsMenu(true);
 		
 		mAdapter = new SimpleCursorAdapter(getActivity(), R.layout.bookmark_feed_view, null, 
-				new String[]{Bookmark.Description, Bookmark.Tags}, 
-				new int[]{R.id.bookmark_feed_description, R.id.bookmark_feed_tags}, 0);
+				new String[]{Bookmark.Description, Bookmark.Url, Bookmark.Tags},
+				new int[]{R.id.bookmark_feed_description, R.id.bookmark_feed_url, R.id.bookmark_feed_tags}, 0);
 		
 		setListAdapter(mAdapter);
 		mAdapter.setViewBinder(new BookmarkViewBinder());

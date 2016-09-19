@@ -22,8 +22,9 @@
  */
  -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:orientation="horizontal"
-	android:layout_height="@dimen/bookmark_list_view_height"
+	android:layout_height="wrap_content"
 	android:layout_width="fill_parent"
     android:gravity="center"
     android:paddingBottom="5dp"
@@ -49,6 +50,16 @@
 		    android:textIsSelectable="false"
             android:textColor="@color/text_body"
             android:text="lksjdfkldjs;lgkkgkljdhafgkjdhsfg;lkhds;flgkjd;slgfkj"/>
+		<TextView
+			android:id="@+id/bookmark_url"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:maxLines="1"
+			android:ellipsize="end"
+			android:textSize="@dimen/browse_bookmark_tag_text"
+			android:textIsSelectable="false"
+			android:textColor="@color/pindroid_blue_dark"
+			tools:text="https://google.com/Lorem ipsum dolor sit amet, blandit praesent feugiat congue vehicula pulvinar"/>
         <TextView
             android:id="@+id/bookmark_tags"
             android:layout_height="wrap_content"
@@ -57,7 +68,7 @@
             android:textSize="@dimen/browse_bookmark_tag_text"
             android:textIsSelectable="false"
             android:textColor="@color/text_caption"
-            android:text="lkjsdf lkjsdflk lkjdgflkdfjg lskdjglkdsg"/>
+            android:text="Lorem ipsum dolor sit amet, blandit praesent feugiat congue vehicula pulvinar"/>
 	</LinearLayout>
 
     <LinearLayout
